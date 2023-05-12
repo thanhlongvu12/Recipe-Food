@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "320405919657",
+    "project_id": "foodapp-2d0cc",
+    "storage_bucket": "foodapp-2d0cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320405919657:android:4bc78a35da75f23e71d6b8",
+        "android_client_info": {
+          "package_name": "com.example.recipe_food"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320405919657-6e3kei2j0kac0f7pih518tclqhu84o6o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa2CEfB0vcSimvhq_4Es_n7Uq-0cBwX6s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "320405919657-6e3kei2j0kac0f7pih518tclqhu84o6o.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "320405919657-irmq18s77pds00otblnu2sj042c3dvsi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.recipeFood"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
