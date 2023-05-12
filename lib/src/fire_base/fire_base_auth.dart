@@ -15,6 +15,15 @@ class FirAuth{
   });
   }
 
+  void signIn(String email, String pass, Function onSuccess, Function(String) onSignInError){
+    _firebaseAuth.signInWithEmailAndPassword(email: email, password: pass).then((user){
+      print("SignIn on success");
+      onSuccess();
+    }).catchError((err){
+      onSignInError("SignIn fail, please try again");
+    });
+  }
+
   creatUser(dynamic userID, String name, String phone, Function onSuccess, Function(String) onRegisterError){
     var user = {
       "name" : name,

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
+import 'package:recipe_food/src/app.dart';
 import 'package:recipe_food/src/blocs/auth_bloc.dart';
+import 'package:recipe_food/src/resources/dialog/loading_dialog.dart';
+import 'package:recipe_food/src/resources/dialog/msg_dialog.dart';
+import 'package:recipe_food/src/resources/home_page.dart';
 import 'package:recipe_food/src/resources/register_page.dart';
 
 class LoginPage extends StatefulWidget{
@@ -9,7 +13,7 @@ class LoginPage extends StatefulWidget{
 }
 
 class _LoginPageState extends State<LoginPage>{
-  AuthBloc authBloc = new AuthBloc();
+  AuthBloc authBlocLogin = new AuthBloc();
 
 
   TextEditingController _emailController = new TextEditingController();
@@ -46,7 +50,7 @@ class _LoginPageState extends State<LoginPage>{
               Padding(
                   padding: EdgeInsets.fromLTRB(0, 80, 0, 20),
                 child: StreamBuilder(
-                  stream: authBloc.emailStream,
+                  stream: authBlocLogin.emailStream,
                   builder: (context, snapshot) {
                     return TextField(
                       controller: _emailController,
@@ -68,7 +72,7 @@ class _LoginPageState extends State<LoginPage>{
                 ),
               ),
               StreamBuilder(
-                stream: authBloc.passStream,
+                stream: authBlocLogin.passStream,
                 builder: (context, snapshot) {
                   return TextField(
                     controller: _passwordController,
@@ -149,6 +153,16 @@ class _LoginPageState extends State<LoginPage>{
   }
 
   void onClickLogin(){
-    var isValid = authBloc.isValidLogin(_emailController.text, _passwordController.text);
+    var isValid = authBlocLogin.isValidLogin(_emailController.text, _passwordController.text);
+    if(isValid) {
+      LoadingDialog.showLoadingDialog(context, "Loading...");
+      authBlocLogin.signIn(_emailController.text, _passwordController.text, (){
+        LoadingDialog.hideLoadingDialog(context);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+      }, (msg){
+        LoadingDialog.hideLoadingDialog(context);
+        MsgDialog.showMsgDialog(context, 'Sign-In', msg);
+      });
+    }
   }
 }

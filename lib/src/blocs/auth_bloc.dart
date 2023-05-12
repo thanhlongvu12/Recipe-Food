@@ -64,10 +64,10 @@ class AuthBloc {
     _firAuth.signUp(email, pass, name, phone, onSuccess, onRegisterError);
   }
 
-  // void signIn(String email, String pass, Function onSuccess,
-  //     Function(String) onSignInError) {
-  //   _firAuth.signIn(email, pass, onSuccess, onSignInError);
-  // }
+  void signIn(String email, String pass, Function onSuccess,
+      Function(String) onSignInError) {
+    _firAuth.signIn(email, pass, onSuccess, onSignInError);
+  }
 
   void dispose() {
     _nameController.close();
